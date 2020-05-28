@@ -1,0 +1,42 @@
+WindowManager:
+    MainWindow:
+
+<MainWindow>:
+    name: "Home Screen"
+    ans: answer
+    url_entry : image_url
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'center'
+
+        BoxLayout:
+            orientation: "vertical"
+            padding: 20
+            space: 10
+
+            Button:
+                text: "Select Image for Classification"
+                font_size: 32
+                on_press: root.identify()
+            BoxLayout:
+                orientation: "horizontal"
+                spacing: 10
+                padding: 10
+                size_hint: 1, .3
+
+                Label:
+                    text: "Or Input URL - "
+                    size_hint: .4, 1
+
+                TextInput:
+                    id: image_url
+                    multiline: False
+                    font_size: 32
+
+                Button:
+                    text: "Classify"
+                    on_press: root.identify_url(image_url)
+                    size_hint: .3, 1
+            Label:
+                id: answer
+                text: ""
