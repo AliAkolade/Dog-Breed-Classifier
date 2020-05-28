@@ -13,7 +13,7 @@ from PIL import Image
 from keras.models import load_model
 
 
-model = load_model('A/Object_Model.h5')
+model = load_model('Model/Object_Model.h5')
 url = 'https://app.nanonets.com/api/v2/ImageCategorization/LabelFile/'
 
 default_directory = os.path.abspath(os.curdir)
