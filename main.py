@@ -64,12 +64,10 @@ class MainWindow(Screen):
             else:
                 try:
                     if self.ans.text == "Dog":
-                        path = input_path
-                        data = {'file': open(path, 'rb'), 'modelId': ('', '052e52ea-845f-4b4a-9fe1-b27dd2eb19d6')}
-                        response = requests.post(url,
-                                                 auth=requests.auth.HTTPBasicAuth('5Ner4sKSl0ikoPQ074_35YoNk9JBX__W',
-                                                                                  ''),
-                                                 files=data)
+                        print(self.url_entry.text)
+                        headers = {'accept': 'application/x-www-form-urlencoded'}
+                        data = {'modelId': '052e52ea-845f-4b4a-9fe1-b27dd2eb19d6', 'urls': [self.url_entry.text]}
+                        response = requests.request('POST', url, headers=headers, auth=requests.auth.HTTPBasicAuth('5Ner4sKSl0ikoPQ074_35YoNk9JBX__W', ''), data=data)
                         a = response.text.replace("{\"message\":\"Success\",\"result\":[{\"message\":\"Success\","
                                                   "\"prediction\":[{\"label\":\"", "").split("\"")
                         label = a[0].replace("_", " ").title()
